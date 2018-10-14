@@ -5,19 +5,21 @@ export const MapLocation = ({
   id = "emptyId",
   name = "emptyTitle",
   lat = "emptyLan",
-  lon = "emptyLon"
+  lon = "emptyLon",
+  onDelete,
+  onEdit
 }) => (
   <div data-testid="map-location" className="margin-1">
     <Card
-      key={id}
+      id={id}
       title={name}
       style={{ width: 250 }}
       actions={[
         <Tooltip title="Delete">
-          <Icon type="delete" />
+          <Icon type="delete" onClick={onDelete} />
         </Tooltip>,
         <Tooltip title="Edit">
-          <Icon type="edit" />
+          <Icon type="edit" onClick={onEdit} />
         </Tooltip>
       ]}
     >
