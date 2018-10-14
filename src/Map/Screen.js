@@ -16,14 +16,18 @@ class MapScreen extends React.Component {
       <MapLocation id={i} name={item.name} lon={item.lon} lat={item.lat} />
     ));
     return (
-      <div className="flexContainer">
+      <div className={`flexContainer margin-1`}>
         <div className="flexItem">
           <GoogleMap />
         </div>
         <div className="flexItem">
-          <Button type="primary">Add Location</Button>
-          <Button type="danger">Reset map</Button>
-          {locationList}
+          <Button type="primary" className="margin-1">
+            Add Location
+          </Button>
+          <Button type="danger" className="margin-1">
+            Remove all
+          </Button>
+          <div className="flexContainer">{locationList}</div>
         </div>
       </div>
     );

@@ -7,7 +7,7 @@ export const MapLocation = ({
   lat = "emptyLan",
   lon = "emptyLon"
 }) => (
-  <div data-testid="map-location">
+  <div data-testid="map-location" className="margin-1">
     <Card
       key={id}
       title={name}

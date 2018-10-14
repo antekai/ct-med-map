@@ -1,10 +1,13 @@
 .flexContainer {
   display: flex;
-  height: 300px;
-  margin: 2rem;
   background-color: #eee;
+  flex-flow: row wrap;
 }
 .flexItem {
-  flex: 50%;
+  flex: 250px;
+  margin: 1rem;
+}
+
+.margin-1 {
   margin: 1rem;
 }
