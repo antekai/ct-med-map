@@ -1,5 +1,9 @@
 import React from "react";
+import { MapLocation } from "./Location";
 
 export const MapLocationList = () => (
-  <div data-testid="map-location-list">MapLocationList</div>
+  <div>
+    <div data-testid="map-location-list">location list</div>
+    <MapLocation />
+  </div>
 );

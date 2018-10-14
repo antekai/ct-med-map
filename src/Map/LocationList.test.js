@@ -6,6 +6,6 @@ describe("Location list", () => {
   it("renders LocationList", () => {
     const { getByTestId } = render(<MapLocationList />);
     const locationList = getByTestId("map-location-list");
-    expect(locationList.innerHTML).toBe("MapLocationList");
+    expect(locationList.innerHTML).toBe("location list");
   });
 });

@@ -1,3 +1,5 @@
 import React from "react";
 
-export const GoogleMap = () => <div>Map</div>;
+export const GoogleMap = () => (
+  <div data-testid="google-map-container">Map</div>
+);
