@@ -10,7 +10,6 @@ class MapScreen extends React.Component {
         <div className="flexItem">
           <GoogleMap />
         </div>
-
         <div className="flexItem">
           <Button type="primary">Add Location</Button>
           <Button type="danger">Reset map</Button>
