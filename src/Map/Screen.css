@@ -1,0 +1,10 @@
+.flexContainer {
+  display: flex;
+  height: 300px;
+  margin: 2rem;
+  background-color: #eee;
+}
+.flexItem {
+  flex: 50%;
+  margin: 1rem;
+}
