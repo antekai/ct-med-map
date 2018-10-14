@@ -3,15 +3,15 @@ import { Card, Icon, Tooltip } from "antd";
 
 export const MapLocation = ({
   id = "emptyId",
-  title = "emptyTitle",
+  name = "emptyTitle",
   lat = "emptyLan",
   lon = "emptyLon"
 }) => (
   <div data-testid="map-location">
     <Card
-      title={title}
-      extra={<a href="#">Edit</a>}
-      style={{ width: 300 }}
+      key={id}
+      title={name}
+      style={{ width: 250 }}
       actions={[
         <Tooltip title="Delete">
           <Icon type="delete" />
@@ -21,9 +21,8 @@ export const MapLocation = ({
         </Tooltip>
       ]}
     >
-      <p>{title}</p>
-      <p>{lat}</p>
-      <p>{lon}</p>
+      <p>Latitude: {lat}</p>
+      <p>Longtitude: {lon}</p>
     </Card>
   </div>
 );
