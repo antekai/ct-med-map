@@ -5,23 +5,24 @@ import "./Screen.css";
 import { MapLocation } from "./Location";
 
 const testData = [
-  { id: 1, name: "Charite", lon: 55, lat: 78 },
-  { id: 2, name: "Franziskus Krankenhaus", lon: 55, lat: 78 }
+  { id: 0, name: "Charite", lon: 55, lat: 78 },
+  { id: 1, name: "Franziskus Krankenhaus", lon: 55, lat: 78 }
 ];
 
 class MapScreen extends React.Component {
   state = { data: testData };
-  onCardDelete = () => {
-    console.log("delete");
+  onCardDelete = id => {
+    const newData = this.state.data.filter(item => item.id !== id);
+    console.log(newData);
   };
-  onCardEdit = () => {
-    console.log(`edit`);
+  onCardEdit = id => {
+    console.log(`edit ${id}`);
   };
   removeAll = () => {
     this.setState({ data: [] });
   };
   render() {
-    console.log(this.state.data);
+    // console.log(this.state.data);
     const locationList = this.state.data.map((item, i) => (
       <MapLocation
         key={i}
@@ -29,8 +30,8 @@ class MapScreen extends React.Component {
         name={item.name}
         lon={item.lon}
         lat={item.lat}
-        onDelete={this.onCardDelete}
-        onEdit={this.onCardEdit(i)}
+        onDelete={() => this.onCardDelete(item.id)}
+        onEdit={() => this.onCardEdit(item.id)}
       />
     ));
     return (
