@@ -3,7 +3,7 @@ import { GoogleMap } from "./GoogleMap";
 import { Button } from "antd";
 import "./Screen.css";
 import { MapLocation } from "./Location";
-import { LocationAddModal } from "./AddModal";
+import { LocationModal } from "./LocationModal";
 
 const testData = [
   { id: 0, name: "Charite", lon: 55, lat: 78 },
@@ -12,35 +12,35 @@ const testData = [
 
 class MapScreen extends React.Component {
   state = { data: testData, isVisibleAddLocationModal: false };
-  onCardDelete = id => {
+
+  removeLocation = id => {
     const newData = this.state.data.filter(item => item.id !== id);
     this.setState({ data: newData });
     console.log(newData);
   };
-  onCardEdit = id => {
+  editLocation = id => {
     console.log(`edit ${id}`);
   };
   removeAll = () => {
     this.setState({ data: [] });
   };
-  showAddLocationModal = () => {
+  showNewLocationModal = () => {
     this.setState({ isVisibleAddLocationModal: true });
   };
-  cancelAddLocation = () => {
+  hideNewLocationModal = () => {
     this.setState({ isVisibleAddLocationModal: false });
   };
   saveFormRef = formRef => {
     this.formRef = formRef;
   };
-  handleAddLocation = () => {
+  saveNewLocation = () => {
     const form = this.formRef.props.form;
     form.validateFields((err, values) => {
       if (err) {
         return;
       }
-
-      const newLoc = { id: this.state.data.length, ...values };
-      this.setState({ data: [...this.state.data, newLoc] });
+      const newLocation = { id: this.state.data.length, ...values };
+      this.setState({ data: [...this.state.data, newLocation] });
       console.log(this.state.data);
     });
   };
@@ -53,8 +53,8 @@ class MapScreen extends React.Component {
         name={item.name}
         lon={item.lon}
         lat={item.lat}
-        onDelete={() => this.onCardDelete(item.id)}
-        onEdit={() => this.onCardEdit(item.id)}
+        onDelete={() => this.removeLocation(item.id)}
+        onEdit={() => this.editLocation(item.id)}
       />
     ));
     return (
@@ -66,15 +66,15 @@ class MapScreen extends React.Component {
           <Button
             type="primary"
             className="margin-1"
-            onClick={this.showAddLocationModal}
+            onClick={this.showNewLocationModal}
           >
             Add Location
           </Button>
-          <LocationAddModal
+          <LocationModal
             wrappedComponentRef={this.saveFormRef}
             visible={this.state.isVisibleAddLocationModal}
-            onCancel={this.cancelAddLocation}
-            onCreate={this.handleAddLocation}
+            onCancel={this.hideNewLocationModal}
+            onCreate={this.saveNewLocation}
           />
           <Button type="danger" className="margin-1" onClick={this.removeAll}>
             Remove all

@@ -3,7 +3,7 @@ import { Modal, Form, Input } from "antd";
 
 const FormItem = Form.Item;
 
-export const LocationAddModal = Form.create()(
+export const LocationModal = Form.create()(
   class extends React.Component {
     render() {
       const { visible, onCancel, onCreate, form } = this.props;
@@ -11,8 +11,8 @@ export const LocationAddModal = Form.create()(
       return (
         <Modal
           visible={visible}
-          title="Add Location"
-          okText="Add"
+          title="Location"
+          okText="Save"
           onCancel={onCancel}
           onOk={onCreate}
         >
