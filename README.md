@@ -32,10 +32,11 @@ yarn start
 - [x] Create, view, edit, delete map locations (React)
 - [x] Validate location input
 - [ ] Sync map locations with Google map api (React, react-google-maps)
-- [ ] Save map locations to REST api (axios, firebase)
+- [ ] Save map locations to a backend api (axios, firebase)
 
 ## Dev-requirements
 
+- [x] Manage project with automated Kanban as a github project
 - [x] Deploy react-client to Netlify
 - [ ] Unit, integration tests (jest, react-testing-library)
 - [ ] End to end tests (cypress)
