@@ -1,5 +1,7 @@
 # React Map app (WorkInProgress)
 
+[![Build Status](https://travis-ci.org/antekai/ct-med-map.svg?branch=master)](https://travis-ci.org/antekai/ct-med-map)[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+
 > Create, edit, delete, view map locations with react and google maps API
 
 ## Table of Contents
@@ -44,8 +46,8 @@ yarn start
 - [ ] Fallback/alternative backend api (express.js)
 - [x] Manage project with automated Kanban (github project)
 - [x] Setup Continuous Deployment (Netlify CD)
-- [ ] Setup Continuous Integration (Travis CI)
-- [ ] Setup automated versioning (semantic-release)
+- [x] Setup Continuous Integration (Travis CI)
+- [x] Setup automated versioning (semantic-release)
 - [ ] Improve README (Design considerations, architecture, previews, add links to Readme)
 
 ## Q&A
