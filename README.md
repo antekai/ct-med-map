@@ -29,16 +29,16 @@ yarn start
 
 ## User-requirements
 
-- [x] Create, view, edit, delete map locations (React)
-- [x] Validate location input
+- [x] Create, view, edit, delete map locations (React-client)
+- [x] Validate location input (getFieldDecorator, regex)
 - [ ] Sync map locations with Google map api (React, react-google-maps)
 - [ ] Save map locations to a backend api (axios, firebase)
 
 ## Dev-requirements
 
-- [x] Manage project with automated Kanban as a github project
-- [x] Deploy react-client to Netlify
-- [ ] Unit, integration tests (jest, react-testing-library)
+- [x] Manage project with automated Kanban (github project)
+- [x] Deploy react-client (Netlify)
+- [ ] Unit, integration tests (jest, react-testing-library, wallaby)
 - [ ] End to end tests (cypress)
 - [ ] Fallback for no 3rd party map api
 - [ ] Fallback/alternative map api (mapbox)
