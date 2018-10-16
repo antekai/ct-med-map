@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, Icon, Tooltip, Input } from "antd";
-import { LocationModal } from "./LocationModal";
 
 export const MapLocation = ({
   id = "emptyId",
