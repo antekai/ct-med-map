@@ -1,6 +1,6 @@
 # React Map app
 
-> Map locations CRUD operations with react
+> Create, edit, delete, view map locations with react and 3rd party map-APIs
 
 ## Table of Contents
 
@@ -8,11 +8,12 @@
 - [Installation](#installation)
 - [User-requirements](#user-requirements)
 - [Dev-requirements](#Dev-requirements)
+- [Q&A](#Q&A)
 - [Support](#support)
 
 ## Preview
 
-URL: react-map-app.netlify.com
+URL: https://react-map-app.netlify.com/
 ![]()
 
 ## Installation
