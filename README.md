@@ -1,6 +1,6 @@
 # React Map app
 
-> Create, edit, delete, view map locations with react and 3rd party map-APIs
+> Create, edit, delete, view map locations with react and google maps API
 
 ## Table of Contents
 
@@ -43,7 +43,7 @@ yarn start
 - [ ] Fallback for no 3rd party map api
 - [ ] Fallback/alternative map api (mapbox)
 - [ ] Fallback/alternative backend api (express.js)
-- [ ] Improve README (Design considerations, previews)
+- [ ] Improve README (Design considerations, architecture, previews)
 
 ## Q&A
 
@@ -57,4 +57,4 @@ yarn start
 
 ## Support
 
-Please [open an issue](https://github.com/antekai/ct-pl-editableTable-react/issues/new) for support.
+Please [open an issue](https://github.com/antekai/ct-med-map/issues/new) for support.
