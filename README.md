@@ -1,4 +1,4 @@
-# React Map app
+# React Map app (WorkInProgress)
 
 > Create, edit, delete, view map locations with react and google maps API
 
@@ -30,19 +30,20 @@ yarn start
 ## User-requirements
 
 - [x] Create, view, edit, delete map locations (React-client)
-- [x] Validate location input (getFieldDecorator, regex)
 - [ ] Sync map locations with Google map api (React, react-google-maps)
 - [ ] Save map locations to a backend api (axios, firebase)
 
 ## Dev-requirements
 
-- [x] Manage project with automated Kanban (github project)
-- [x] Deploy react-client (Netlify)
+- [x] Validate user input (getFieldDecorator, regex)
+- [ ] Type-checking (prop types)
 - [ ] Unit, integration tests (jest, react-testing-library, wallaby)
 - [ ] End to end tests (cypress)
 - [ ] Fallback for no 3rd party map api
 - [ ] Fallback/alternative map api (mapbox)
 - [ ] Fallback/alternative backend api (express.js)
+- [x] Manage project with automated Kanban (github project)
+- [x] Deploy prototype app (Netlify)
 - [ ] Improve README (Design considerations, architecture, previews)
 
 ## Q&A
