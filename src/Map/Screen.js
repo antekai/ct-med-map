@@ -6,21 +6,18 @@ import { MapLocation } from "./Location";
 import { LocationModal } from "./LocationModal";
 
 const testData = [
-  { id: 0, name: "Charite", lon: 55, lat: 78 },
-  { id: 1, name: "Franziskus Krankenhaus", lon: 55, lat: 78 }
+  { id: 0, name: "Charite", lon: 55, lat: 78, isEdit: false },
+  { id: 1, name: "Franziskus Krankenhaus", lon: 55, lat: 78, isEdit: false }
 ];
 
 class MapScreen extends React.Component {
-  state = { data: testData, isVisibleAddLocationModal: false };
+  state = {
+    data: testData,
+    isVisibleAddLocationModal: false,
+    isVisibleEditLocationModal: false,
+    isEdit: false
+  };
 
-  removeLocation = id => {
-    const newData = this.state.data.filter(item => item.id !== id);
-    this.setState({ data: newData });
-    console.log(newData);
-  };
-  editLocation = id => {
-    console.log(`edit ${id}`);
-  };
   removeAll = () => {
     this.setState({ data: [] });
   };
@@ -29,6 +26,12 @@ class MapScreen extends React.Component {
   };
   hideNewLocationModal = () => {
     this.setState({ isVisibleAddLocationModal: false });
+  };
+  showEditLocationModal = () => {
+    this.setState({ isVisibleEditLocationModal: true });
+  };
+  hideEditLocationModal = () => {
+    this.setState({ isVisibleEditLocationModal: false });
   };
   saveFormRef = formRef => {
     this.formRef = formRef;
@@ -44,6 +47,49 @@ class MapScreen extends React.Component {
       console.log(this.state.data);
     });
   };
+  removeLocation = id => {
+    const newData = this.state.data.filter(item => item.id !== id);
+    this.setState({ data: newData });
+    console.log(newData);
+  };
+  // editLocation = id => {
+  //   console.log(`edit ${id}`);
+  // };
+  editLocation = id => {
+    const clonedData = [...this.state.data];
+    const updatedRecord = { ...clonedData[id], isEdit: true };
+    clonedData[id] = updatedRecord;
+    this.setState({ data: clonedData });
+  };
+  viewLocation = id => {
+    const clonedData = [...this.state.data];
+    const updatedRecord = { ...clonedData[id], isEdit: false };
+    clonedData[id] = updatedRecord;
+    this.setState({ data: clonedData });
+  };
+
+  onEnterName = (id, e) => {
+    console.log(id, e.target.value);
+    const clonedData = [...this.state.data];
+    const updatedRecord = { ...clonedData[id], name: e.target.value };
+    clonedData[id] = updatedRecord;
+    this.setState({ data: clonedData });
+  };
+  onEnterLat = (id, e) => {
+    console.log(id, e.target.value);
+    const clonedData = [...this.state.data];
+    const updatedRecord = { ...clonedData[id], lat: e.target.value };
+    clonedData[id] = updatedRecord;
+    this.setState({ data: clonedData });
+  };
+  onEnterLon = (id, e) => {
+    console.log(id, e.target.value);
+    const clonedData = [...this.state.data];
+    const updatedRecord = { ...clonedData[id], lon: e.target.value };
+    clonedData[id] = updatedRecord;
+    this.setState({ data: clonedData });
+  };
+
   render() {
     // console.log(this.state.data);
     const locationList = this.state.data.map(item => (
@@ -54,7 +100,12 @@ class MapScreen extends React.Component {
         lon={item.lon}
         lat={item.lat}
         onDelete={() => this.removeLocation(item.id)}
+        isEdit={item.isEdit}
         onEdit={() => this.editLocation(item.id)}
+        onEnterName={e => this.onEnterName(item.id, e)}
+        onEnterLat={e => this.onEnterLat(item.id, e)}
+        onEnterLon={e => this.onEnterLon(item.id, e)}
+        onCheck={() => this.viewLocation(item.id)}
       />
     ));
     return (
@@ -76,6 +127,12 @@ class MapScreen extends React.Component {
             onCancel={this.hideNewLocationModal}
             onCreate={this.saveNewLocation}
           />
+          {/* <LocationModal
+            wrappedComponentRef={this.saveFormRef}
+            visible={this.state.isVisibleEditLocationModal}
+            onCancel={this.hideEditLocationModal}
+            onCreate={this.editLocation(this.state.data.id)}
+          /> */}
           <Button type="danger" className="margin-1" onClick={this.removeAll}>
             Remove all
           </Button>
