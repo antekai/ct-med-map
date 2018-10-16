@@ -26,6 +26,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "react-testing-library": "^5.2.0"
+    "react-testing-library": "^5.2.0",
+    "semantic-release": "^15.9.17"
   }
 }
