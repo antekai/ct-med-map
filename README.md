@@ -43,8 +43,10 @@ yarn start
 - [ ] Fallback/alternative map api (mapbox)
 - [ ] Fallback/alternative backend api (express.js)
 - [x] Manage project with automated Kanban (github project)
-- [x] Deploy prototype app (Netlify)
-- [ ] Improve README (Design considerations, architecture, previews)
+- [x] Setup Continuous Deployment (Netlify CD)
+- [ ] Setup Continuous Integration (Travis CI)
+- [ ] Setup automated versioning (semantic-release)
+- [ ] Improve README (Design considerations, architecture, previews, add links to Readme)
 
 ## Q&A
 
