@@ -28,20 +28,20 @@ yarn start
 
 ## User-requirements
 
-[x] Create, view, edit, delete map locations (React)  
-[x] Validate location input  
-[] Sync map locations with Google map api (React, react-google-maps)  
-[] Save map locations to REST api (axios, firebase)
+- [x] Create, view, edit, delete map locations (React)
+- [x] Validate location input
+- [ ] Sync map locations with Google map api (React, react-google-maps)
+- [ ] Save map locations to REST api (axios, firebase)
 
 ## Dev-requirements
 
-[x] Deploy react-client to Netlify  
-[] Unit, integration tests (jest, react-testing-library)  
-[] End to end tests (cypress)
-[] Fallback for no 3rd party map api  
-[] Fallback/alternative map api (mapbox)  
-[] Fallback/alternative backend api (express.js)
-[] Improve README (Design considerations, previews)
+- [x] Deploy react-client to Netlify
+- [ ] Unit, integration tests (jest, react-testing-library)
+- [ ] End to end tests (cypress)
+- [ ] Fallback for no 3rd party map api
+- [ ] Fallback/alternative map api (mapbox)
+- [ ] Fallback/alternative backend api (express.js)
+- [ ] Improve README (Design considerations, previews)
 
 ## Q&A
 
