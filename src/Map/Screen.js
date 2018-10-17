@@ -103,15 +103,17 @@ class MapScreen extends React.Component {
   };
   onEnterLat = (id, e) => {
     console.log(id, e.target.value);
+    const lat = parseFloat(e.target.value);
     const clonedData = [...this.state.data];
-    const updatedRecord = { ...clonedData[id], lat: e.target.value };
+    const updatedRecord = { ...clonedData[id], lat: lat };
     clonedData[id] = updatedRecord;
     this.setState({ data: clonedData });
   };
   onEnterLon = (id, e) => {
     console.log(id, e.target.value);
+    const lng = parseFloat(e.target.value);
     const clonedData = [...this.state.data];
-    const updatedRecord = { ...clonedData[id], lon: e.target.value };
+    const updatedRecord = { ...clonedData[id], lon: lng };
     clonedData[id] = updatedRecord;
     this.setState({ data: clonedData });
   };
