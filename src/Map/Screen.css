@@ -1,6 +1,6 @@
 .flexContainer {
   display: flex;
-  background-color: #eee;
+  /* background-color: #eee; */
   flex-flow: row wrap;
 }
 .flexItem {

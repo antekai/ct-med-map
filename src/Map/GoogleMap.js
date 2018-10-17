@@ -1,3 +1,4 @@
+/* global google */
 import React from "react";
 import { compose, withProps } from "recompose";
 import {
@@ -22,12 +23,14 @@ export const GoogleMapWrapper = compose(
   withGoogleMap
 )(props => (
   <GoogleMap
-    defaultZoom={6.5}
+    defaultZoom={6.35}
     defaultCenter={{ lat: 51.49192, lng: 10.242399 }}
   >
-    {props.isMarkerShown && (
-      <Marker position={{ lat: 51.49192, lng: 10.242399 }} />
-    )}
+    <Marker position={{ lat: 51.49192, lng: 10.242399 }} title="aaaa" />
+    {/* {props.isMarkerShown && (
+      <Marker position={{ lat: 51.49192, lng: 10.242399 }} title="aaaa" />
+
+    )} */}
   </GoogleMap>
 ));
 // 51.491920, 10.242399

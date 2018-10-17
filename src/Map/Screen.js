@@ -4,15 +4,42 @@ import { Button } from "antd";
 import "./Screen.css";
 import { MapLocation } from "./Location";
 import { LocationModal } from "./LocationModal";
+import { StyledMapWithAnInfoBox } from "./Map2";
 
-const testData = [
-  { id: 0, name: "Charite", lon: 55, lat: 78, isEdit: false },
-  { id: 1, name: "Franziskus Krankenhaus", lon: 55, lat: 78, isEdit: false }
+const mockData = [
+  {
+    id: 0,
+    name: "Charite Virchow Klinikum",
+    lat: 52.544659,
+    lon: 13.343836,
+    isEdit: false
+  },
+  {
+    id: 1,
+    name: "Schwabinger Krankenhaus",
+    lat: 48.17243,
+    lon: 11.576502,
+    isEdit: false
+  },
+  {
+    id: 2,
+    name: "St. Josef Hospital Essen",
+    lat: 51.388807,
+    lon: 7.005864,
+    isEdit: false
+  },
+  {
+    id: 3,
+    name: "Krankenhaus Neu-Mariahilf",
+    lat: 51.541854,
+    lon: 9.942719,
+    isEdit: false
+  }
 ];
 
 class MapScreen extends React.Component {
   state = {
-    data: testData,
+    data: mockData,
     isVisibleAddLocationModal: false,
     isVisibleEditLocationModal: false,
     isEdit: false
@@ -112,6 +139,7 @@ class MapScreen extends React.Component {
       <div className={`flexContainer margin-1`}>
         <div className="flexItem">
           <GoogleMapWrapper isMarkerShown />
+          {/* <StyledMapWithAnInfoBox /> */}
         </div>
         <div className="flexItem">
           <Button
