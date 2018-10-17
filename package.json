@@ -19,7 +19,8 @@
     "eject": "react-scripts eject",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release",
-    "lh": "lighthouse-ci"
+    "lh": "lighthouse-ci",
+    "wba": "node triggerBundleAnalyzer.js"
   },
   "eslintConfig": {
     "extends": "react-app"
