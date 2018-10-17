@@ -4,7 +4,7 @@ import { Button } from "antd";
 import "./Screen.css";
 import { MapLocation } from "./Location";
 import { LocationModal } from "./LocationModal";
-
+import { Marker } from "react-google-maps";
 const mockData = [
   {
     id: 0,
@@ -134,11 +134,13 @@ class MapScreen extends React.Component {
         onCheck={() => this.viewLocation(item.id)}
       />
     ));
+    const markers = this.state.data.map(item => (
+      <Marker position={{ lat: item.lat, lng: item.lon }} title={item.name} />
+    ));
     return (
       <div className={`flexContainer margin-1`}>
         <div className="flexItem">
-          <GoogleMapWrapper isMarkerShown />
-          {/* <StyledMapWithAnInfoBox /> */}
+          <GoogleMapWrapper isMarkerShown>{markers}</GoogleMapWrapper>
         </div>
         <div className="flexItem">
           <Button

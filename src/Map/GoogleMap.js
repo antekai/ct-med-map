@@ -6,11 +6,9 @@ import {
   GoogleMap,
   Marker
 } from "react-google-maps";
-// export const GoogleMap = () => (
-//   <div data-testid="google-map-container">Map</div>
-// );
 
 const gMapKey = `${process.env.REACT_APP_GOOGLE_MAP_API}`;
+
 export const GoogleMapWrapper = compose(
   withProps({
     googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${gMapKey}&v=3.exp&libraries=geometry,drawing,places`,
@@ -25,11 +23,6 @@ export const GoogleMapWrapper = compose(
     defaultZoom={6.35}
     defaultCenter={{ lat: 51.49192, lng: 10.242399 }}
   >
-    <Marker position={{ lat: 51.49192, lng: 10.242399 }} title="aaaa" />
-    {/* {props.isMarkerShown && (
-      <Marker position={{ lat: 51.49192, lng: 10.242399 }} title="aaaa" />
-
-    )} */}
+    {props.children}
   </GoogleMap>
 ));
-// 51.491920, 10.242399
