@@ -115,6 +115,9 @@ class MapScreen extends React.Component {
     clonedData[id] = updatedRecord;
     this.setState({ data: clonedData });
   };
+  loadMockData = () => {
+    this.setState({ data: mockData });
+  };
 
   render() {
     // console.log(this.state.data);
@@ -156,12 +159,9 @@ class MapScreen extends React.Component {
             onCancel={this.hideNewLocationModal}
             onCreate={this.saveNewLocation}
           />
-          {/* <LocationModal
-            wrappedComponentRef={this.saveFormRef}
-            visible={this.state.isVisibleEditLocationModal}
-            onCancel={this.hideEditLocationModal}
-            onCreate={this.editLocation(this.state.data.id)}
-          /> */}
+          <Button type="ghost" className="margin-1" onClick={this.loadMockData}>
+            Load mockData
+          </Button>
           <Button type="danger" className="margin-1" onClick={this.removeAll}>
             Remove all
           </Button>
