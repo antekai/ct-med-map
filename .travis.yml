@@ -3,8 +3,8 @@ node_js: node
 cache:
   directories:
     - node_modules
-install:
-  - npm install
+# install:
+#   - npm install
 script:
   # - npm test
   - npx semantic-release
@@ -22,6 +22,6 @@ deploy:
   on:
     branch: master
 
-after_success:
-  # - ./deploy.sh # TODO(you): deploy the PR changes to your staging server.
-  - npm run lh -- https://react-map-app.netlify.com/
+# after_success:
+#   # - ./deploy.sh # TODO(you): deploy the PR changes to your staging server.
+#   - npm run lh -- https://react-map-app.netlify.com/
