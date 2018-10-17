@@ -3,6 +3,8 @@ node_js: node
 cache:
   directories:
     - node_modules
+install:
+  - npm install
 script:
   # - npm test
   - npx semantic-release
@@ -21,6 +23,5 @@ deploy:
     branch: master
 
 after_success:
-  - npm install https://github.com/ebidel/lighthouse-ci
   # - ./deploy.sh # TODO(you): deploy the PR changes to your staging server.
   - npm run lh -- https://react-map-app.netlify.com/
