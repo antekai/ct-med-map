@@ -15,7 +15,7 @@
 
 ## Preview
 
-URL: https://react-map-app.netlify.com/
+URL: https://react-map-app.netlify.com/  
 Bundle analysis: [wba-report.html](http://htmlpreview.github.io/?https://github.com/antekai/ct-med-map/blob/master/wba-report.html)
 ![]()
 

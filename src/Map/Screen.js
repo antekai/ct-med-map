@@ -1,5 +1,5 @@
 import React from "react";
-import { GoogleMap } from "./GoogleMap";
+import { GoogleMapWrapper } from "./GoogleMap";
 import { Button } from "antd";
 import "./Screen.css";
 import { MapLocation } from "./Location";
@@ -111,7 +111,7 @@ class MapScreen extends React.Component {
     return (
       <div className={`flexContainer margin-1`}>
         <div className="flexItem">
-          <GoogleMap />
+          <GoogleMapWrapper isMarkerShown />
         </div>
         <div className="flexItem">
           <Button
