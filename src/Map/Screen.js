@@ -4,7 +4,6 @@ import { Button } from "antd";
 import "./Screen.css";
 import { MapLocation } from "./Location";
 import { LocationModal } from "./LocationModal";
-import { StyledMapWithAnInfoBox } from "./Map2";
 
 const mockData = [
   {
