@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.10.1",
+    "axios": "^0.18.0",
     "babel-plugin-import": "^1.9.1",
     "react": "^16.5.2",
     "react-app-rewired": "^1.6.2",

@@ -5,6 +5,7 @@ import "./Screen.css";
 import { MapLocation } from "./Location";
 import { LocationModal } from "./LocationModal";
 import { Marker } from "react-google-maps";
+import { fireBaseInstance } from "../axios";
 const mockData = [
   {
     id: 0,
@@ -129,6 +130,13 @@ class MapScreen extends React.Component {
   loadMockData = () => {
     this.setState({ data: mockData });
   };
+  postToFirebase = () => {
+    const { data } = this.state;
+    fireBaseInstance
+      .post("/fbData.json", data)
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
+  };
 
   render() {
     // console.log(this.state.data);
@@ -176,6 +184,13 @@ class MapScreen extends React.Component {
           />
           <Button type="ghost" className="margin-1" onClick={this.loadMockData}>
             Load mockData
+          </Button>
+          <Button
+            type="ghost"
+            className="margin-1"
+            onClick={this.postToFirebase}
+          >
+            postToFirebase
           </Button>
           <Button type="danger" className="margin-1" onClick={this.removeAll}>
             Remove all
