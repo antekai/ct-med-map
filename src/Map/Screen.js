@@ -39,20 +39,25 @@ const mockData = [
 
 class MapScreen extends React.Component {
   state = {
-    data: mockData,
-    isVisibleAddLocationModal: false,
-    isVisibleEditLocationModal: false,
-    isEdit: false
+    data: [],
+    isVisibleNewLocationModal: false,
+    isEdit: false,
+    fbGetError: false
   };
-
+  componentDidMount() {
+    fireBaseInstance
+      .get("/fbData.json")
+      .then(response => this.setState({ data: response.data }))
+      .catch(error => this.setState({ fbGetError: true }));
+  }
   removeAll = () => {
     this.setState({ data: [] });
   };
   showNewLocationModal = () => {
-    this.setState({ isVisibleAddLocationModal: true });
+    this.setState({ isVisibleNewLocationModal: true });
   };
   hideNewLocationModal = () => {
-    this.setState({ isVisibleAddLocationModal: false });
+    this.setState({ isVisibleNewLocationModal: false });
   };
   showEditLocationModal = () => {
     this.setState({ isVisibleEditLocationModal: true });
@@ -130,10 +135,10 @@ class MapScreen extends React.Component {
   loadMockData = () => {
     this.setState({ data: mockData });
   };
-  postToFirebase = () => {
+  putToFirebase = () => {
     const { data } = this.state;
     fireBaseInstance
-      .post("/fbData.json", data)
+      .put("fbData.json", data)
       .then(response => console.log(response))
       .catch(error => console.log(error));
   };
@@ -178,7 +183,7 @@ class MapScreen extends React.Component {
           </Button>
           <LocationModal
             wrappedComponentRef={this.saveFormRef}
-            visible={this.state.isVisibleAddLocationModal}
+            visible={this.state.isVisibleNewLocationModal}
             onCancel={this.hideNewLocationModal}
             onCreate={this.saveNewLocation}
           />
@@ -186,11 +191,11 @@ class MapScreen extends React.Component {
             Load mockData
           </Button>
           <Button
-            type="ghost"
+            type="primary"
             className="margin-1"
-            onClick={this.postToFirebase}
+            onClick={this.putToFirebase}
           >
-            postToFirebase
+            SaveToFirebase
           </Button>
           <Button type="danger" className="margin-1" onClick={this.removeAll}>
             Remove all
