@@ -5,7 +5,7 @@ import "./Screen.css";
 import { MapLocation } from "./Location";
 import { LocationModal } from "./LocationModal";
 import { Marker } from "react-google-maps";
-import { fireBaseInstance } from "../axios";
+import { fireBaseInstance, gMapInstance } from "../axios";
 const mockData = [
   {
     id: 0,
@@ -42,13 +42,16 @@ class MapScreen extends React.Component {
     data: [],
     isVisibleNewLocationModal: false,
     isEdit: false,
-    fbGetError: false
+    fbGetError: false,
+    gMapError: false
   };
   componentDidMount() {
     fireBaseInstance
       .get("/fbData.json")
       .then(response => this.setState({ data: response.data }))
       .catch(error => this.setState({ fbGetError: true }));
+    // Error handling for google maps API
+    gMapInstance.get("").catch(error => this.setState({ gMapError: true }));
   }
   removeAll = () => {
     this.setState({ data: [] });
@@ -171,7 +174,11 @@ class MapScreen extends React.Component {
     return (
       <div className={`flexContainer margin-1`}>
         <div className="flexItem">
-          <GoogleMapWrapper isMarkerShown>{markers}</GoogleMapWrapper>
+          {this.state.gMapError ? (
+            `GoogleMapAPI error - put fallback component here`
+          ) : (
+            <GoogleMapWrapper isMarkerShown>{markers}</GoogleMapWrapper>
+          )}
         </div>
         <div className="flexItem">
           <Button
