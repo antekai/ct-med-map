@@ -51,7 +51,8 @@ class MapScreen extends React.Component {
       .then(response => this.setState({ data: response.data }))
       .catch(error => this.setState({ fbGetError: true }));
     // Error handling for google maps API
-    gMapInstance.get("").catch(error => this.setState({ gMapError: true }));
+    // gMapInstance.get("").catch(error => this.setState({ gMapError: true }));
+    // TODO: triggers CORS error - error handling only possible via googleMapJS API v3 directly
   }
   removeAll = () => {
     this.setState({ data: [] });
