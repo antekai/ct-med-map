@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Form, Input } from "antd";
+import { Modal, Form, Input, InputNumber } from "antd";
 
 const FormItem = Form.Item;
 
@@ -41,11 +41,13 @@ export const LocationModal = Form.create()(
                     pattern: /^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}/,
                     message: `Latitude should only contain a valid latitude format`
                   }
-                ]
+                ],
+                initialValue: 48.17243
               })(
-                <Input
+                <InputNumber
                   placeholder="Please add Location's latitude"
-                  type="text"
+                  step={0.1}
+                  size={150}
                 />
               )}
             </FormItem>
@@ -60,8 +62,14 @@ export const LocationModal = Form.create()(
                     pattern: /^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}/,
                     message: `longitude should only contain a valid longitude format`
                   }
-                ]
-              })(<Input placeholder="Please add Location's longitude" />)}
+                ],
+                initialValue: 11.576502
+              })(
+                <InputNumber
+                  placeholder="Please add Location's longitude"
+                  step={0.1}
+                />
+              )}
             </FormItem>
           </Form>
         </Modal>

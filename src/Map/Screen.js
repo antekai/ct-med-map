@@ -68,9 +68,14 @@ class MapScreen extends React.Component {
       if (err) {
         return;
       }
-      const newLocation = { id: this.state.data.length, ...values };
+      const newLocation = {
+        id: this.state.data.length,
+        lat: parseFloat(values.lat),
+        lon: parseFloat(values.lon),
+        ...values
+      };
       this.setState({ data: [...this.state.data, newLocation] });
-      console.log(this.state.data);
+      console.log(this.state.data, newLocation);
     });
   };
   removeLocation = id => {
@@ -103,17 +108,21 @@ class MapScreen extends React.Component {
   };
   onEnterLat = (id, e) => {
     console.log(id, e.target.value);
-    const lat = parseFloat(e.target.value);
     const clonedData = [...this.state.data];
-    const updatedRecord = { ...clonedData[id], lat: lat };
+    const updatedRecord = {
+      ...clonedData[id],
+      lat: parseFloat(e.target.value)
+    };
     clonedData[id] = updatedRecord;
     this.setState({ data: clonedData });
   };
   onEnterLon = (id, e) => {
     console.log(id, e.target.value);
-    const lng = parseFloat(e.target.value);
     const clonedData = [...this.state.data];
-    const updatedRecord = { ...clonedData[id], lon: lng };
+    const updatedRecord = {
+      ...clonedData[id],
+      lon: parseFloat(e.target.value)
+    };
     clonedData[id] = updatedRecord;
     this.setState({ data: clonedData });
   };
@@ -139,8 +148,12 @@ class MapScreen extends React.Component {
         onCheck={() => this.viewLocation(item.id)}
       />
     ));
-    const markers = this.state.data.map(item => (
-      <Marker position={{ lat: item.lat, lng: item.lon }} title={item.name} />
+    const markers = this.state.data.map((item, i) => (
+      <Marker
+        key={i}
+        position={{ lat: item.lat, lng: item.lon }}
+        title={item.name}
+      />
     ));
     return (
       <div className={`flexContainer margin-1`}>

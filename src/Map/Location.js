@@ -51,7 +51,7 @@ export const MapLocation = ({
             ]
       }
     >
-      <p>
+      <div>
         {isEdit ? (
           <Tooltip title="Press enter to update values">
             <Input
@@ -63,8 +63,8 @@ export const MapLocation = ({
         ) : (
           `Latitude: ${lat}`
         )}
-      </p>
-      <p>
+      </div>
+      <div>
         {isEdit ? (
           <Tooltip title="Press enter to update values">
             <Input
@@ -76,7 +76,7 @@ export const MapLocation = ({
         ) : (
           `Longitude: ${lon}`
         )}
-      </p>
+      </div>
     </Card>
   </div>
 );
