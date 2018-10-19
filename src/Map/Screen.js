@@ -5,7 +5,7 @@ import "./Screen.css";
 import { MapLocation } from "./Location";
 import { LocationModal } from "./LocationModal";
 import { Marker } from "react-google-maps";
-import { fireBaseInstance, gMapInstance } from "../axios";
+import { fireBaseInstance } from "../axios";
 const mockData = [
   {
     id: 0,
@@ -63,12 +63,7 @@ class MapScreen extends React.Component {
   hideNewLocationModal = () => {
     this.setState({ isVisibleNewLocationModal: false });
   };
-  showEditLocationModal = () => {
-    this.setState({ isVisibleEditLocationModal: true });
-  };
-  hideEditLocationModal = () => {
-    this.setState({ isVisibleEditLocationModal: false });
-  };
+
   saveFormRef = formRef => {
     this.formRef = formRef;
   };
@@ -93,9 +88,6 @@ class MapScreen extends React.Component {
     this.setState({ data: newData });
     console.log(newData);
   };
-  // editLocation = id => {
-  //   console.log(`edit ${id}`);
-  // };
   editLocation = id => {
     const clonedData = [...this.state.data];
     const updatedRecord = { ...clonedData[id], isEdit: true };
