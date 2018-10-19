@@ -38,7 +38,7 @@ export const LocationModal = Form.create()(
                     message: `Please add Location's latitude!`
                   },
                   {
-                    pattern: /^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}/,
+                    pattern: /^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}$/,
                     message: `Latitude should only contain a valid latitude format`
                   }
                 ],
@@ -59,7 +59,7 @@ export const LocationModal = Form.create()(
                     message: `Please add Location's longitude!`
                   },
                   {
-                    pattern: /^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}/,
+                    pattern: /^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}$/,
                     message: `longitude should only contain a valid longitude format`
                   }
                 ],
