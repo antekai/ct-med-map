@@ -1,5 +1,5 @@
 import React from "react";
-import { GoogleMapWrapper } from "./GoogleMap";
+import { GoogleMapWrapper } from "./GoogleMapWrapper";
 import { Button } from "antd";
 import "./Screen.css";
 import { MapLocation } from "./Location";
@@ -160,6 +160,7 @@ class MapScreen extends React.Component {
     ));
     return (
       <div className={`flexContainer margin-1`}>
+        {/*** MAP COMPONENT ***/}
         <div className="flexItem">
           {this.state.gMapError ? (
             `GoogleMapAPI error - put fallback component here`
@@ -167,6 +168,7 @@ class MapScreen extends React.Component {
             <GoogleMapWrapper>{markers}</GoogleMapWrapper>
           )}
         </div>
+        {/*** CONTROLS ***/}
         <div className="flexItem">
           <Button
             type="primary"
@@ -194,6 +196,7 @@ class MapScreen extends React.Component {
           <Button type="danger" className="margin-1" onClick={this.removeAll}>
             Remove all
           </Button>
+          {/*** LOCATION LIST ***/}
           <div className="flexContainer">{locationList}</div>
         </div>
       </div>

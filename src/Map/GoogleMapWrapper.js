@@ -3,6 +3,7 @@
 import React from "react";
 import { compose, withProps } from "recompose";
 import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
+import PropTypes from "prop-types";
 
 const gMapKey = `${process.env.REACT_APP_GOOGLE_MAP_API}`;
 // const gMapKeyB = `${process.env.REACT_APP_GOOGLE_MAP_BROKEN_API}`;
@@ -24,3 +25,7 @@ export const GoogleMapWrapper = compose(
     {props.children}
   </GoogleMap>
 ));
+
+GoogleMapWrapper.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element).isRequired //children: array of map-markers
+};

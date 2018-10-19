@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Icon, Tooltip, Input, Form, Button } from "antd";
+import PropTypes from "prop-types";
 
 const FormItem = Form.Item;
 
@@ -7,10 +8,10 @@ export const MapLocation = Form.create()(
   class extends React.Component {
     render() {
       const {
-        id = "emptyId",
-        name = "emptyTitle",
-        lat = "emptyLan",
-        lon = "emptyLon",
+        id,
+        name,
+        lat,
+        lon,
         onDelete,
         onEdit,
         isEdit = false,
@@ -112,3 +113,15 @@ export const MapLocation = Form.create()(
     }
   }
 );
+
+MapLocation.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  lat: PropTypes.number.isRequired,
+  lon: PropTypes.number.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  isEdit: PropTypes.bool.isRequired,
+  onSave: PropTypes.func.isRequired,
+  form: PropTypes.object
+};

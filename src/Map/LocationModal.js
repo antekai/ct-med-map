@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, Form, Input, InputNumber } from "antd";
+import PropTypes from "prop-types";
 
 const FormItem = Form.Item;
 
@@ -77,3 +78,10 @@ export const LocationModal = Form.create()(
     }
   }
 );
+
+LocationModal.propTypes = {
+  visible: PropTypes.bool.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onCreate: PropTypes.func.isRequired,
+  form: PropTypes.object
+};

@@ -34,6 +34,7 @@
   ],
   "devDependencies": {
     "lighthouse-ci": "https://github.com/ebidel/lighthouse-ci",
+    "prop-types": "^15.6.2",
     "react-app-rewire-webpack-bundle-analyzer": "^1.0.1",
     "react-testing-library": "^5.2.0",
     "semantic-release": "^15.9.17",
