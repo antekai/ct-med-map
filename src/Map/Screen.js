@@ -6,6 +6,7 @@ import { MapLocation } from "./Location";
 import { LocationModal } from "./LocationModal";
 import { Marker } from "react-google-maps";
 import { fireBaseInstance } from "../axios";
+
 const mockData = [
   {
     id: 0,
@@ -39,7 +40,7 @@ const mockData = [
 
 class MapScreen extends React.Component {
   state = {
-    data: [],
+    data: mockData,
     isVisibleNewLocationModal: false,
     isEdit: false,
     fbGetError: false,
@@ -54,16 +55,26 @@ class MapScreen extends React.Component {
     // gMapInstance.get("").catch(error => this.setState({ gMapError: true }));
     // TODO: triggers CORS error - error handling only possible via googleMapJS API v3 directly
   }
-  removeAll = () => {
-    this.setState({ data: [] });
-  };
+
   showNewLocationModal = () => {
     this.setState({ isVisibleNewLocationModal: true });
   };
   hideNewLocationModal = () => {
     this.setState({ isVisibleNewLocationModal: false });
   };
-
+  removeAll = () => {
+    this.setState({ data: [] });
+  };
+  loadMockData = () => {
+    this.setState({ data: mockData });
+  };
+  putToFirebase = () => {
+    const { data } = this.state;
+    fireBaseInstance
+      .put("fbData.json", data)
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
+  };
   saveFormRef = formRef => {
     this.formRef = formRef;
   };
@@ -79,7 +90,10 @@ class MapScreen extends React.Component {
         lon: parseFloat(values.lon),
         ...values
       };
-      this.setState({ data: [...this.state.data, newLocation] });
+      this.setState({
+        data: [...this.state.data, newLocation],
+        isVisibleNewLocationModal: false
+      });
       console.log(this.state.data, newLocation);
     });
   };
@@ -94,53 +108,35 @@ class MapScreen extends React.Component {
     clonedData[id] = updatedRecord;
     this.setState({ data: clonedData });
   };
-  viewLocation = id => {
-    const clonedData = [...this.state.data];
-    const updatedRecord = { ...clonedData[id], isEdit: false };
-    clonedData[id] = updatedRecord;
-    this.setState({ data: clonedData });
-  };
 
-  onEnterName = (id, e) => {
-    console.log(id, e.target.value);
-    const clonedData = [...this.state.data];
-    const updatedRecord = { ...clonedData[id], name: e.target.value };
-    clonedData[id] = updatedRecord;
-    this.setState({ data: clonedData });
+  inlineFormRef = ifr => {
+    this.ifr = ifr;
   };
-  onEnterLat = (id, e) => {
-    console.log(id, e.target.value);
-    const clonedData = [...this.state.data];
-    const updatedRecord = {
-      ...clonedData[id],
-      lat: parseFloat(e.target.value)
-    };
-    clonedData[id] = updatedRecord;
-    this.setState({ data: clonedData });
+  saveLocation = (id, e) => {
+    const form = this.ifr.props.form;
+    form.validateFields((err, values) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      const { name, lat, lon } = {
+        name: e.target[0].value,
+        lat: parseFloat(e.target[1].value),
+        lon: parseFloat(e.target[2].value)
+      };
+      const clonedData = [...this.state.data];
+      const updatedRecord = {
+        ...clonedData[id],
+        name,
+        lat,
+        lon,
+        isEdit: false
+      };
+      clonedData[id] = updatedRecord;
+      this.setState({ data: clonedData });
+    });
   };
-  onEnterLon = (id, e) => {
-    console.log(id, e.target.value);
-    const clonedData = [...this.state.data];
-    const updatedRecord = {
-      ...clonedData[id],
-      lon: parseFloat(e.target.value)
-    };
-    clonedData[id] = updatedRecord;
-    this.setState({ data: clonedData });
-  };
-  loadMockData = () => {
-    this.setState({ data: mockData });
-  };
-  putToFirebase = () => {
-    const { data } = this.state;
-    fireBaseInstance
-      .put("fbData.json", data)
-      .then(response => console.log(response))
-      .catch(error => console.log(error));
-  };
-
   render() {
-    // console.log(this.state.data);
     const locationList = this.state.data.map(item => (
       <MapLocation
         key={item.id}
@@ -151,10 +147,8 @@ class MapScreen extends React.Component {
         onDelete={() => this.removeLocation(item.id)}
         isEdit={item.isEdit}
         onEdit={() => this.editLocation(item.id)}
-        onEnterName={e => this.onEnterName(item.id, e)}
-        onEnterLat={e => this.onEnterLat(item.id, e)}
-        onEnterLon={e => this.onEnterLon(item.id, e)}
-        onCheck={() => this.viewLocation(item.id)}
+        onSave={e => this.saveLocation(item.id, e)}
+        wrappedComponentRef={this.inlineFormRef}
       />
     ));
     const markers = this.state.data.map((item, i) => (
@@ -170,7 +164,7 @@ class MapScreen extends React.Component {
           {this.state.gMapError ? (
             `GoogleMapAPI error - put fallback component here`
           ) : (
-            <GoogleMapWrapper isMarkerShown>{markers}</GoogleMapWrapper>
+            <GoogleMapWrapper>{markers}</GoogleMapWrapper>
           )}
         </div>
         <div className="flexItem">

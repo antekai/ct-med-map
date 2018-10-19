@@ -1,8 +1,11 @@
+//  /* global google */
+
 import React from "react";
 import { compose, withProps } from "recompose";
 import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
 
 const gMapKey = `${process.env.REACT_APP_GOOGLE_MAP_API}`;
+// const gMapKeyB = `${process.env.REACT_APP_GOOGLE_MAP_BROKEN_API}`;
 
 export const GoogleMapWrapper = compose(
   withProps({
