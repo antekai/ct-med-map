@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "antd";
-import { compose, withProps } from "recompose";
+import { withProps } from "recompose";
 import PropTypes from "prop-types";
 
 const BaseButton = ({ txt, onClick, type, size }) => (
