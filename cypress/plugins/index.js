@@ -14,7 +14,12 @@ const path = require("path");
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-
+  on("before:browser:launch", (browser = {}, args) => {
+    if (browser.name === "chrome") {
+      args.push("--disable-blink-features=RootLayerScrolling");
+      return args;
+    }
+  });
   /* Ignore files with path for cross-platform compatibility (e.g. win OS)  */
 
   config.ignoreTestFiles = path.join("**", "examples", "**");

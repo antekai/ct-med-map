@@ -12,23 +12,27 @@ export const LocationModal = Form.create()(
       return (
         <Modal
           visible={visible}
-          title="Location"
-          okText="Save"
+          title="New Location"
+          okText="Submit"
           onCancel={onCancel}
           onOk={onCreate}
         >
-          <Form layout="vertical">
+          <Form layout="vertical" data-cy="new-location-modal-form">
             <FormItem label="Location name">
               {getFieldDecorator("name", {
                 rules: [
-                  { required: true, message: `Please add Location's name!` },
+                  { required: true, message: `Location's name is required` },
                   {
                     pattern: /[A-Za-z0-9]{1,15}/,
-                    message: `name should only contain letters (from 1 to 15)`
+                    message: `Accepted only letters and numbers`
                   }
                 ]
               })(
-                <Input placeholder="Please add location's Name" type="text" />
+                <Input
+                  placeholder="Location's name"
+                  type="text"
+                  data-cy="new-location-name"
+                />
               )}
             </FormItem>
             <FormItem label="Latitude">
@@ -36,17 +40,18 @@ export const LocationModal = Form.create()(
                 rules: [
                   {
                     required: true,
-                    message: `Please add Location's latitude!`
+                    message: `latitude is required`
                   },
                   {
                     pattern: /^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}$/,
-                    message: `Latitude should only contain a valid latitude format`
+                    message: `invalid latitude`
                   }
                 ],
                 initialValue: 48.17243
               })(
                 <InputNumber
-                  placeholder="Please add Location's latitude"
+                  placeholder="Latitude"
+                  data-cy="new-location-lat"
                   step={0.1}
                   size={150}
                 />
@@ -57,17 +62,18 @@ export const LocationModal = Form.create()(
                 rules: [
                   {
                     required: true,
-                    message: `Please add Location's longitude!`
+                    message: `longitude is required`
                   },
                   {
                     pattern: /^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}$/,
-                    message: `longitude should only contain a valid longitude format`
+                    message: `invalid longitude`
                   }
                 ],
                 initialValue: 11.576502
               })(
                 <InputNumber
-                  placeholder="Please add Location's longitude"
+                  placeholder="Longitude"
+                  data-cy="new-location-lon"
                   step={0.1}
                 />
               )}

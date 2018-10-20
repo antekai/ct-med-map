@@ -143,6 +143,7 @@ class MapScreen extends React.Component {
         <div className="flexItem">
           <PrimaryButton
             txt="Add Location"
+            data-cy="new-location-btn"
             onClick={this.showNewLocationModal}
           />
           <GhostButton txt="Load mockData" onClick={this.loadMockData} />
