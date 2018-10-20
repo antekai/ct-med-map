@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Icon, Tooltip, Input, Form, Button } from "antd";
 import PropTypes from "prop-types";
+import { PrimaryButton } from "../UI/Buttons";
 
 const FormItem = Form.Item;
 

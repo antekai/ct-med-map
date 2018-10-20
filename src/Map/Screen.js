@@ -6,37 +6,8 @@ import { MapLocation } from "./Location";
 import { LocationModal } from "./LocationModal";
 import { Marker } from "react-google-maps";
 import { fireBaseInstance } from "../axios";
-
-const mockData = [
-  {
-    id: 0,
-    name: "Charite Virchow Klinikum",
-    lat: 52.544659,
-    lon: 13.343836,
-    isEdit: false
-  },
-  {
-    id: 1,
-    name: "Schwabinger Krankenhaus",
-    lat: 48.17243,
-    lon: 11.576502,
-    isEdit: false
-  },
-  {
-    id: 2,
-    name: "St. Josef Hospital Essen",
-    lat: 51.388807,
-    lon: 7.005864,
-    isEdit: false
-  },
-  {
-    id: 3,
-    name: "Krankenhaus Neu-Mariahilf",
-    lat: 51.541854,
-    lon: 9.942719,
-    isEdit: false
-  }
-];
+import { mockData } from "../data/mockData";
+import { GhostButton, PrimaryButton, DangerButton } from "../UI/Buttons";
 
 class MapScreen extends React.Component {
   state = {
@@ -168,34 +139,25 @@ class MapScreen extends React.Component {
             <GoogleMapWrapper>{markers}</GoogleMapWrapper>
           )}
         </div>
+
         {/*** CONTROLS ***/}
         <div className="flexItem">
-          <Button
-            type="primary"
-            className="margin-1"
+          <PrimaryButton
+            txt="Add Location"
             onClick={this.showNewLocationModal}
-          >
-            Add Location
-          </Button>
+          />
+          <GhostButton txt="Load mockData" onClick={this.loadMockData} />
+          <PrimaryButton txt="SaveToFirebase" onClick={this.putToFirebase} />
+          <DangerButton txt="RemoveAll" onClick={this.removeAll} />
+
+          {/*** MODAL(NEW LOCATION) ***/}
           <LocationModal
             wrappedComponentRef={this.saveFormRef}
             visible={this.state.isVisibleNewLocationModal}
             onCancel={this.hideNewLocationModal}
             onCreate={this.saveNewLocation}
           />
-          <Button type="ghost" className="margin-1" onClick={this.loadMockData}>
-            Load mockData
-          </Button>
-          <Button
-            type="primary"
-            className="margin-1"
-            onClick={this.putToFirebase}
-          >
-            SaveToFirebase
-          </Button>
-          <Button type="danger" className="margin-1" onClick={this.removeAll}>
-            Remove all
-          </Button>
+
           {/*** LOCATION LIST ***/}
           <div className="flexContainer">{locationList}</div>
         </div>
