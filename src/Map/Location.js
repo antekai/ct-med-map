@@ -1,7 +1,8 @@
 import React from "react";
 import { Card, Icon, Tooltip, Input, Form, Button } from "antd";
 import PropTypes from "prop-types";
-import { PrimaryButton } from "../UI/Buttons";
+import { PrimaryButton, GhostButton } from "../UI/Buttons";
+import { DeleteCard, EditCard } from "../UI/CardActions";
 
 const FormItem = Form.Item;
 
@@ -15,7 +16,7 @@ export const MapLocation = Form.create()(
         lon,
         onDelete,
         onEdit,
-        isEdit = false,
+        isEdit,
         onSave,
         form
       } = this.props;
@@ -45,9 +46,7 @@ export const MapLocation = Form.create()(
                 }
                 style={{ width: 250 }}
                 actions={[
-                  <Tooltip title="Delete">
-                    <Icon type="delete" onClick={onDelete} />
-                  </Tooltip>,
+                  <DeleteCard onClick={onDelete} />,
                   <Tooltip title="Save">
                     <Button type="primary" htmlType="submit" size="small">
                       <Icon type="check" />
@@ -97,12 +96,8 @@ export const MapLocation = Form.create()(
               title={name}
               style={{ width: 250 }}
               actions={[
-                <Tooltip title="Delete">
-                  <Icon type="delete" onClick={onDelete} />
-                </Tooltip>,
-                <Tooltip title="Edit">
-                  <Icon type="edit" onClick={onEdit} />
-                </Tooltip>
+                <DeleteCard onClick={onDelete} />,
+                <EditCard onClick={onEdit} />
               ]}
             >
               <div>Latitude: {lat}</div>

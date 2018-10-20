@@ -1,6 +1,5 @@
 import React from "react";
 import { GoogleMapWrapper } from "./GoogleMapWrapper";
-import { Button } from "antd";
 import "./Screen.css";
 import { MapLocation } from "./Location";
 import { LocationModal } from "./LocationModal";
@@ -11,7 +10,7 @@ import { GhostButton, PrimaryButton, DangerButton } from "../UI/Buttons";
 
 class MapScreen extends React.Component {
   state = {
-    data: mockData,
+    data: [],
     isVisibleNewLocationModal: false,
     isEdit: false,
     fbGetError: false,
