@@ -116,7 +116,7 @@ MapLocation.propTypes = {
   lon: PropTypes.number.isRequired,
   onDelete: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
-  isEdit: PropTypes.bool.isRequired,
+  isEdit: PropTypes.bool,
   onSave: PropTypes.func.isRequired,
   form: PropTypes.object
 };

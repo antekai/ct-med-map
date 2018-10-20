@@ -12,8 +12,8 @@
 // the project's config changing)
 const path = require("path");
 module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
+  // workaround for click() error
+  // https://github.com/cypress-io/cypress/issues/2037#issuecomment-407898194
   on("before:browser:launch", (browser = {}, args) => {
     if (browser.name === "chrome") {
       args.push("--disable-blink-features=RootLayerScrolling");

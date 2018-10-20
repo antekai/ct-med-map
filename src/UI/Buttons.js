@@ -9,7 +9,7 @@ const BaseButton = ({ txt, onClick, type, size }) => (
   </Button>
 );
 BaseButton.propTypes = {
-  txt: PropTypes.oneOfType(PropTypes.string, PropTypes.element),
+  txt: PropTypes.PropTypes.string,
   type: PropTypes.oneOf(["primary", "ghost", "dashed", "danger"]),
   size: PropTypes.oneOf(["small", "medium", "large"]),
   onClick: PropTypes.func
