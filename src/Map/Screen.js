@@ -1,8 +1,8 @@
 import React from "react";
 import { GoogleMapWrapper } from "./GoogleMapWrapper";
 import "./Screen.css";
-import { MapLocation } from "./Location";
-import { LocationModal } from "./LocationModal";
+import { MapLocationCard } from "./LocationCard";
+import { MapNewLocationModal } from "./NewLocationModal";
 import { Marker } from "react-google-maps";
 import { fireBaseInstance } from "../axios";
 import { mockData } from "../data/mockData";
@@ -12,15 +12,13 @@ class MapScreen extends React.Component {
   state = {
     data: [],
     isVisibleNewLocationModal: false,
-    isEdit: false,
-    fbGetError: false,
-    gMapError: false
+    firebaseGetError: false
   };
   componentDidMount() {
     fireBaseInstance
       .get("/fbData.json")
       .then(response => this.setState({ data: response.data }))
-      .catch(error => this.setState({ fbGetError: true }));
+      .catch(error => this.setState({ firebaseGetError: true }));
     // Error handling for google maps API
     // gMapInstance.get("").catch(error => this.setState({ gMapError: true }));
     // TODO: triggers CORS error - error handling only possible via googleMapJS API v3 directly
@@ -108,7 +106,7 @@ class MapScreen extends React.Component {
   };
   render() {
     const locationList = this.state.data.map(item => (
-      <MapLocation
+      <MapLocationCard
         key={item.id}
         id={item.id}
         name={item.name}
@@ -151,7 +149,7 @@ class MapScreen extends React.Component {
           <DangerButton txt="RemoveAll" onClick={this.removeAll} />
 
           {/*** MODAL(NEW LOCATION) ***/}
-          <LocationModal
+          <MapNewLocationModal
             wrappedComponentRef={this.saveFormRef}
             visible={this.state.isVisibleNewLocationModal}
             onCancel={this.hideNewLocationModal}
