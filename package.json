@@ -1,5 +1,5 @@
 {
-  "name": "gmap",
+  "name": "react-map-app",
   "version": "0.0.0-development",
   "private": true,
   "dependencies": {

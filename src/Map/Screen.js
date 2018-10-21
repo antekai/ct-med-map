@@ -105,7 +105,7 @@ class MapScreen extends React.Component {
     });
   };
   render() {
-    const locationList = this.state.data.map(item => (
+    const dataToCardList = this.state.data.map(item => (
       <MapLocationCard
         key={item.id}
         id={item.id}
@@ -119,7 +119,7 @@ class MapScreen extends React.Component {
         wrappedComponentRef={this.inlineFormRef}
       />
     ));
-    const markers = this.state.data.map((item, i) => (
+    const dataToMarkers = this.state.data.map((item, i) => (
       <Marker
         key={i}
         position={{ lat: item.lat, lng: item.lon }}
@@ -133,7 +133,7 @@ class MapScreen extends React.Component {
           {this.state.gMapError ? (
             `GoogleMapAPI error - put fallback component here`
           ) : (
-            <GoogleMapWrapper>{markers}</GoogleMapWrapper>
+            <GoogleMapWrapper>{dataToMarkers}</GoogleMapWrapper>
           )}
         </div>
 
@@ -157,7 +157,7 @@ class MapScreen extends React.Component {
           />
 
           {/*** LOCATION LIST ***/}
-          <div className="flexContainer">{locationList}</div>
+          <div className="flexContainer">{dataToCardList}</div>
         </div>
       </div>
     );
