@@ -64,5 +64,6 @@ describe("User view, edit, remove location", () => {
       "have.text",
       "cypLocLatitude: 49.9999Longitude: 11.9999"
     );
+    cy.get(`[title=cypLoc]`).should("have.attr", "coords"); //check if location google marker exists
   });
 });
