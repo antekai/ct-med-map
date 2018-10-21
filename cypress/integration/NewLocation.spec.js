@@ -16,7 +16,7 @@ describe("User adds new location", () => {
       .type("11.1111");
   });
 
-  it("Validation check: Empty fields", () => {
+  it("displays error for empty fields", () => {
     cy.get("@name").clear();
     cy.contains(`Location's name is required`);
     cy.get("@lat").clear();
@@ -25,7 +25,7 @@ describe("User adds new location", () => {
     cy.contains(`longitude is required`);
   });
 
-  it("Validation check: Invalid input", () => {
+  it("displays error for invalid input", () => {
     cy.get("@name")
       .clear()
       .type("%^*(");
@@ -40,12 +40,12 @@ describe("User adds new location", () => {
     cy.contains(`invalid longitude`);
   });
 
-  it("New Location (valid) is saved", () => {
+  it("saves New Location", () => {
     cy.contains("span", "Submit").click({ force: true });
     cy.contains("CypressHaus");
     cy.contains("SaveToFirebase").click();
     cy.reload(true);
     cy.contains("CypressHaus");
-    cy.get(`[title=CypressHaus]`).should("have.attr", "coords");
+    cy.get(`[title=CypressHaus]`).should("have.attr", "coords"); //check if location google marker exists
   });
 });
