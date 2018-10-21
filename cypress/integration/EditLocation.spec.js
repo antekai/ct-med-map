@@ -3,7 +3,7 @@ describe("User view, edit, remove location", () => {
     cy.visit("");
   });
 
-  it("views and deletes location", () => {
+  it("deletes one location", () => {
     cy.contains("Load mockData").click();
     cy.get("#0 .ant-card-head-title").should(
       "have.text",
@@ -20,7 +20,7 @@ describe("User view, edit, remove location", () => {
     cy.contains("Latitude").should("not.exist");
   });
 
-  it("displays error for empty fields", () => {
+  it("edits location: empty fields", () => {
     cy.get("[data-icon=edit]")
       .eq(1)
       .click();
@@ -32,7 +32,7 @@ describe("User view, edit, remove location", () => {
     cy.contains("Please add longitude!").should("exist");
   });
 
-  it("displays error for invalid input", () => {
+  it("edits location: invalid inputs", () => {
     cy.get("[data-icon=edit]:first").click();
     cy.get("#0 input#name")
       .clear()
@@ -48,7 +48,7 @@ describe("User view, edit, remove location", () => {
     cy.contains("Invalid longitude format").should("exist");
   });
 
-  it("edits a (valid) location", () => {
+  it("saves location, views edited location", () => {
     cy.get("[data-icon=edit]:first").click();
     cy.get("#0 input#name")
       .clear()
