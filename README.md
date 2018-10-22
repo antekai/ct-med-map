@@ -18,7 +18,7 @@
 URL: https://react-map-app.netlify.com/
 
 ![](react-map-app-cy.gif)
-_e2e test preview (testing newLocation useflow)_
+_e2e test preview (userflow - User adds new location)_
 
 ## Installation
 
@@ -59,7 +59,7 @@ yarn cy:open
 
 ## Technical-features
 
-![](react-map-app-arch.jpg)  
+![](react-map-app-arc.jpg)  
 _React-map-app architecture_
 
 - [x] Design Considerations: Scalability, Portability, Maintainability
