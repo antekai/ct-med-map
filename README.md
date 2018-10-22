@@ -39,6 +39,17 @@ yarn start
 const gMapKey = `${process.env.REACT_APP_GOOGLE_MAP_API}`;
 ```
 
+Testing with cypress (E2E, integration):
+
+```sh
+#you need to have open instance of application at localhost:3000 before using cypress:
+#yarn start
+#on another terminal instance run:
+yarn cy:open
+```
+
+> End-to-End tests with cypress simulate realistic user interaction with the application. There are no stubs but real request to backend (Firebase) and Map API.
+
 ## User-features
 
 - [x] Create, view, edit, delete map locations (React.js)
