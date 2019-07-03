@@ -11,7 +11,8 @@
     "react-dom": "^16.5.2",
     "react-google-maps": "^9.4.5",
     "react-scripts": "2.0.4",
-    "recompose": "^0.30.0"
+    "recompose": "^0.30.0",
+    "snyk": "^1.189.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -24,7 +25,9 @@
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release",
     "lh": "lighthouse-ci",
-    "wba": "node triggerBundleAnalyzer.js"
+    "wba": "node triggerBundleAnalyzer.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,5 +51,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/antekai/ct-med-map.git"
-  }
+  },
+  "snyk": true
 }
