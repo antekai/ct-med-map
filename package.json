@@ -3,14 +3,14 @@
   "version": "0.0.0-development",
   "private": true,
   "dependencies": {
-    "antd": "^3.10.1",
+    "antd": "^4.0.0",
     "axios": "^0.18.0",
     "babel-plugin-import": "^1.9.1",
     "react": "^16.5.2",
     "react-app-rewired": "^1.6.2",
     "react-dom": "^16.5.2",
     "react-google-maps": "^9.4.5",
-    "react-scripts": "2.0.4",
+    "react-scripts": "5.0.0",
     "recompose": "^0.30.0"
   },
   "scripts": {
