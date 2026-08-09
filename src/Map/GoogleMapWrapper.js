@@ -21,11 +21,13 @@ export const GoogleMapWrapper = compose(
   <GoogleMap
     defaultZoom={6.35}
     defaultCenter={{ lat: 51.49192, lng: 10.242399 }}
+    onError={props.onError}
   >
     {props.children}
   </GoogleMap>
 ));
 
 GoogleMapWrapper.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired //children: array of map-markers
+  children: PropTypes.arrayOf(PropTypes.element).isRequired, //children: array of map-markers
+  onError: PropTypes.func
 };

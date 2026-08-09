@@ -133,7 +133,7 @@ class MapScreen extends React.Component {
           {this.state.gMapError ? (
             `GoogleMapAPI error - put fallback component here`
           ) : (
-            <GoogleMapWrapper>{dataToMarkers}</GoogleMapWrapper>
+            <GoogleMapWrapper onError={() => this.setState({ gMapError: true })}>{dataToMarkers}</GoogleMapWrapper>
           )}
         </div>
 
